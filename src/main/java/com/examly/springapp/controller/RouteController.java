@@ -26,8 +26,8 @@ public class RouteController {
 
     @DeleteMapping("/deleteRoutes")
     @Transactional
-    public String deleteRoute(@RequestBody Route route){
-        return service.deleteRoute(route.getRegistrationNo());
+    public String deleteRoute(@RequestParam String registrationNo){
+        return service.deleteRoute(registrationNo);
     }
 
     @PutMapping("/editRoutes")
