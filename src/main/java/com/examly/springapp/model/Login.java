@@ -7,23 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "User")
+@Table(name="login")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class Login {
     @Id
     @GeneratedValue
     private int id;
-    private String emailId;
+    private String email;
     private String password;
-    private String mobileNumber;
-    private String customerName;
-    private boolean status=true;
-
-
 }

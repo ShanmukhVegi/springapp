@@ -1,5 +1,6 @@
 package com.examly.springapp.model;
 
+
 import lombok.*;
 
 import javax.persistence.Entity;
@@ -7,23 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "User")
+@Table(name = "Booking")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class Booking {
     @Id
     @GeneratedValue
     private int id;
     private String emailId;
-    private String password;
-    private String mobileNumber;
-    private String customerName;
-    private boolean status=true;
-
-
+    private String registrationNo;
 }

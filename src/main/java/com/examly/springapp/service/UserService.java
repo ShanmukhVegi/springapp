@@ -13,14 +13,13 @@ public class UserService {
     Userdao dao;
 
     public boolean register(User user){
+        User checkuser=dao.findByemailId(user.getEmailId());
+        if(checkuser!=null){
+            return false;
+        }
         if(dao.save(user)!=null){
             return true;
         }
-        return false;
-    }
-    public boolean verifyLogin(String username,String password){
-        User user=dao.findByemail(username);
-        if(user.getPassword().equals(password)){return true;}
         return false;
     }
 
@@ -31,7 +30,7 @@ public class UserService {
 
 
     public String deleteUserByName(String email){
-        dao.deleteByemail(email);
+        dao.deleteByemailId(email);
         return "Deleted "+email+" username successfully";
     }
 
@@ -41,9 +40,11 @@ public class UserService {
     }
 
     public String update(User user){
-        User existinguser=dao.findByemail(user.getEmail());
+        User existinguser=dao.findByemailId(user.getEmailId());
         if(existinguser==null){return "NO USER";}
-        System.out.println(existinguser.getEmail()+" is the existing user");
+        existinguser.setMobileNumber(user.getMobileNumber());
+        existinguser.setCustomerName(user.getCustomerName());
+        existinguser.setStatus(user.isStatus());
         existinguser.setPassword(user.getPassword());
         dao.save(existinguser);
         return "UPDATED SUCCESSFULLY";

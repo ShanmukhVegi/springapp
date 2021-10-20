@@ -7,23 +7,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name = "User")
+@Table(name="routes")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class User {
+public class Route {
     @Id
     @GeneratedValue
     private int id;
-    private String emailId;
-    private String password;
-    private String mobileNumber;
-    private String customerName;
-    private boolean status=true;
-
-
+    private String startPoint;
+    private String endPoint;
+    private int distance;
+    private String time;
+    private String date;
+    private String carModel;
+    private String registrationNo;
+    private int seatsAvailable;
 }

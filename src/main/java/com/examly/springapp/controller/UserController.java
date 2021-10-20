@@ -1,45 +1,71 @@
 package com.examly.springapp.controller;
 
+import com.examly.springapp.model.Route;
 import com.examly.springapp.model.User;
+import com.examly.springapp.service.LoginService;
+import com.examly.springapp.service.RouteService;
 import com.examly.springapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
 public class UserController {
     @Autowired
     private UserService service;
+    @Autowired
+    private LoginService loginService;
+    @Autowired
+    private RouteService routeService;
 
     @PostMapping("/signup")
     public boolean register(@RequestBody User user){
+        System.out.println(user.getEmailId()+" "+user.getPassword()+" "+user.getCustomerName()+" "+user.getMobileNumber());
+
+        loginService.savelogin(user);
+
         return service.register(user);
     }
 
-    @PostMapping("/login")
-    public boolean login(@RequestBody User user){
-        return service.verifyLogin(user.getEmail(),user.getPassword());
+    @PutMapping("/editCustomer")
+    public String editCustomer(@RequestBody User user){
+
+        if(loginService.update(user)){
+            return service.update(user);}
+        return "Error in updating";
+    }
+
+    @GetMapping("/routes")
+    public List<Route> getRoutes(){
+        return routeService.getRoutes();
+    }
+
+    @GetMapping("/routeById")
+    public Route getRouteById(@RequestParam String registrationNumber){
+        return routeService.getRouteById(registrationNumber);
     }
 
 
+
+
+
+
+    /*
 
     @GetMapping("/getusers")
     public List<User> getusers(){
         return service.getusers();
     }
 
-
-
     @GetMapping("/delete")
     @Transactional
     public String delete(@RequestBody User user){
-        return service.deleteUserByName(user.getEmail());
+        return service.deleteUserByName(user.getEmailId());
     }
 
 
-    @GetMapping("/deleteID")
+    @GetMapping("/deleteByID")
     @Transactional
     public String deletebyid(@RequestBody User user){
         return service.deletebyid(user.getId());
@@ -50,4 +76,7 @@ public class UserController {
     public String update(@RequestBody User user){
         return service.update(user);
     }
+    */
+
+
 }
