@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface Employeedao extends JpaRepository<Employee,Integer> {
     public Employee findByEmail(String email);
-    public Employee deleteByEmail(String email);
+    public String deleteByEmail(String email);
 }

@@ -47,6 +47,7 @@ public class EmployeeService {
     }
 
     public String deleteEmployee(String emailId){
+        System.out.println(emailId+"===========");
         if(dao.deleteByEmail(emailId)!=null){
             return "Deleted Employee";}
         return "Error in deleting";
