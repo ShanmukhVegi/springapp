@@ -5,4 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface Logindao extends JpaRepository<Login,Integer> {
     public Login findByemail(String email);
+    public void deleteByEmail(String emailId);
 }

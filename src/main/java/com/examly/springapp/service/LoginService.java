@@ -36,4 +36,11 @@ public class LoginService {
         dao.save(existed);
         return true;
     }
+
+    public boolean delete(String emailId){
+        Login existed=dao.findByemail(emailId);
+        if(existed==null){return false;}
+        dao.deleteByEmail(emailId);
+        return true;
+    }
 }

@@ -61,7 +61,9 @@ public class UserController {
     @DeleteMapping("/deleteUserByEmail")
     @Transactional
     public String deleteUserByEmail(@RequestParam String emailId){
-        return service.deleteUserByName(emailId);
+        if(loginService.delete(emailId)){
+            return service.deleteUserByName(emailId);}
+        return "ERROR IN DELETING";
     }
 
 
