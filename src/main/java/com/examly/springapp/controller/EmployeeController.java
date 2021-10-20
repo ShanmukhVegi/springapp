@@ -31,7 +31,7 @@ public class EmployeeController {
         return service.deleteEmployee(emailId);
     }
 
-    @GetMapping("/editEmployee")
+    @PutMapping("/editEmployee")
     public Employee editEmployee(@RequestBody Employee employee){
         return service.editEmployee(employee);
     }
