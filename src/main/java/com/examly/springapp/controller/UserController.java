@@ -52,6 +52,11 @@ public class UserController {
         return service.getUserById(emailId);
     }
 
+    @GetMapping("/getUsers")
+    public List<User> getUsers(){
+        return service.getusers();
+    }
+
 
 
 
