@@ -36,6 +36,7 @@ public class RouteService {
         existingRoute.setRegistrationNo(route.getRegistrationNo());
         existingRoute.setStartPoint(route.getStartPoint());
         existingRoute.setTime(route.getTime());
+        existingRoute.setSeatsAvailable(route.getSeatsAvailable());
         dao.save(existingRoute);
         return "Successfully routes edited";
     }
