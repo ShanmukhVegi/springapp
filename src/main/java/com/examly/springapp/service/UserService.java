@@ -50,5 +50,10 @@ public class UserService {
         return "UPDATED SUCCESSFULLY";
     }
 
+    public User getUserById(String emailId){
+        User existing=dao.findByemailId(emailId);
+        return existing;
+    }
+
 
 }

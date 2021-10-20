@@ -23,7 +23,7 @@ public class User {
     private String password;
     private String mobileNumber;
     private String customerName;
-    private boolean status=true;
+    private boolean status;
 
 
 }

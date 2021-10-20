@@ -47,6 +47,14 @@ public class UserController {
     }
 
 
+    @GetMapping("/getUserById")
+    public User getUserDetails(@RequestParam String emailId){
+        return service.getUserById(emailId);
+    }
+
+
+
+
 
 
 
