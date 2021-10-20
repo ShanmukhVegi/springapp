@@ -8,6 +8,7 @@ import com.examly.springapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RestController
@@ -57,39 +58,11 @@ public class UserController {
         return service.getusers();
     }
 
-
-
-
-
-
-
-
-    /*
-
-    @GetMapping("/getusers")
-    public List<User> getusers(){
-        return service.getusers();
-    }
-
-    @GetMapping("/delete")
+    @DeleteMapping("/deleteUserByEmail")
     @Transactional
-    public String delete(@RequestBody User user){
-        return service.deleteUserByName(user.getEmailId());
+    public String deleteUserByEmail(@RequestParam String emailId){
+        return service.deleteUserByName(emailId);
     }
-
-
-    @GetMapping("/deleteByID")
-    @Transactional
-    public String deletebyid(@RequestBody User user){
-        return service.deletebyid(user.getId());
-    }
-
-
-    @PostMapping("/update")
-    public String update(@RequestBody User user){
-        return service.update(user);
-    }
-    */
 
 
 }
