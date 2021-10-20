@@ -18,13 +18,13 @@ public class EmployeeService {
 
     public Employee getEmployeeByID(String emailId){
 
-        Employee result=dao.findByEmailId(emailId);
+        Employee result=dao.findByEmail(emailId);
         if(result==null){return null;}
         return result;
     }
 
     public Employee editEmployee(Employee employee){
-        Employee existingEmployee=dao.findByEmailId(employee.getEmail());
+        Employee existingEmployee=dao.findByEmail(employee.getEmail());
         if(existingEmployee==null){return null;}
         existingEmployee.setVehicleNumber(employee.getVehicleNumber());
         existingEmployee.setVehicleModel(employee.getVehicleModel());
@@ -40,15 +40,15 @@ public class EmployeeService {
     }
 
     public boolean saveEmployee(Employee employee){
-        Employee existing=dao.findByEmailId(employee.getEmail());
+        Employee existing=dao.findByEmail(employee.getEmail());
         if(existing!=null){return false;}
         dao.save(employee);
         return true;
     }
 
-    public String deleteEmployee(String username){
-        if(dao.deleteByEmailId(username)!=null){
-            return "Deleted";}
+    public String deleteEmployee(String emailId){
+        if(dao.deleteByEmail(emailId)!=null){
+            return "Deleted Employee";}
         return "Error in deleting";
     }
 
