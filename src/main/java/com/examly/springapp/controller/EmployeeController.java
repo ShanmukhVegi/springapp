@@ -21,14 +21,14 @@ public class EmployeeController {
 
 
     @GetMapping("/getEmployeeById")
-    public Employee getEmployeeById(@RequestParam String username){
-        return service.getEmployeeByID(username);
+    public Employee getEmployeeById(@RequestParam String emailId){
+        return service.getEmployeeByID(emailId);
     }
 
     @DeleteMapping("/delete")
     @Transactional
-    public String deleteEmployee(@RequestParam String username){
-        return service.deleteEmployee(username);
+    public String deleteEmployee(@RequestParam String emailId){
+        return service.deleteEmployee(emailId);
     }
 
     @GetMapping("/editEmployee")
